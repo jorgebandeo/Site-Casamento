@@ -1,0 +1,81 @@
+:root {
+    --terracota: #E2725B;
+    --terracota-escuro: #B65C47;
+    --terracota-claro: #f3e7e2;
+    --branco: #fff;
+    --cinza: #333;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--terracota-claro);
+    color: var(--cinza);
+    text-align: center;
+  }
+  
+  header {
+    background-color: var(--terracota);
+    color: var(--branco);
+    padding: 2rem 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  main {
+    padding: 2rem 1rem;
+  }
+  
+  section {
+    margin: 2rem auto;
+    max-width: 600px;
+    background-color: var(--branco);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  form input,
+  form select,
+  form button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  form button {
+    background-color: var(--terracota-escuro);
+    color: var(--branco);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  form button:hover {
+    background-color: var(--terracota);
+  }
+  
+  ul#listaPresentes {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul#listaPresentes li {
+    padding: 0.6rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  footer {
+    background-color: var(--terracota);
+    color: var(--branco);
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  

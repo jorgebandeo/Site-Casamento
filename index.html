@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casamento Jorge & Benícia</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Jorge & Benícia</h1>
+    <p>Estamos ansiosos para celebrar com você! 💍</p>
+    <p>Agosto de 2025</p>
+  </header>
+
+  <main>
+    <section id="confirmacao">
+      <h2>Confirmação de Presença</h2>
+      <form id="formPresenca">
+        <!-- Campo com autocomplete -->
+        <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" required list="listaConvidados" />
+        <datalist id="listaConvidados"></datalist>
+
+        <select name="presenca" required>
+          <option value="">Você irá?</option>
+          <option value="sim">Sim, com muito amor!</option>
+          <option value="nao">Infelizmente não poderei.</option>
+        </select>
+        <button type="submit">Confirmar Presença</button>
+      </form>
+    </section>
+
+    <section id="presentes">
+      <h2>Nossa Lista de Presentes</h2>
+      <ul id="listaPresentes">
+        <!-- Presentes serão inseridos via JS -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Com carinho, Jorge & Benícia • Agosto 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
