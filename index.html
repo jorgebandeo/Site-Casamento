@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +9,8 @@
   <title>Casamento Jorge & Benícia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+
+<body onload="initGoogleAPI()">
 
   <header>
     <h1>Jorge & Benícia</h1>
@@ -18,9 +22,18 @@
     <section id="confirmacao">
       <h2>Confirmação de Presença</h2>
       <form id="formPresenca">
-        <!-- Campo com autocomplete -->
-        <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" required list="listaConvidados" />
-        <datalist id="listaConvidados"></datalist>
+
+        <div class="autocomplete-wrapper">
+          <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" required />
+          <ul id="autocompleteList" class="autocomplete-list hidden"></ul>
+        </div>
+        
+        
+
+
+      
+
+
 
         <select name="presenca" required>
           <option value="">Você irá?</option>
@@ -34,7 +47,7 @@
     <section id="presentes">
       <h2>Nossa Lista de Presentes</h2>
       <ul id="listaPresentes">
-        <!-- Presentes serão inseridos via JS -->
+      
       </ul>
     </section>
   </main>
@@ -43,6 +56,11 @@
     <p>Com carinho, Jorge & Benícia • Agosto 2025</p>
   </footer>
 
+
+  <script src="https://apis.google.com/js/api.js"></script>
+
+
   <script src="script.js"></script>
+
 </body>
 </html>
