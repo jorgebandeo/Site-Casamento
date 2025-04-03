@@ -46,7 +46,7 @@ function preencherAutoComplete(nomes) {
     if (!filtro) {
       list.classList.add('hidden');
       return;
-    }
+    }   
 
     const resultados = nomes.filter(nome => nome.toLowerCase().includes(filtro));
 
@@ -99,6 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     try {
+      const botao = form.querySelector('button');
+      botao.disabled = true;
+      botao.textContent = 'Enviando...';
+    
       const res = await fetch(WEBAPP_URL, {
         method: 'POST',
         headers: {
@@ -106,14 +110,22 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         body: new URLSearchParams({ nome, presenca })
       });
-
+    
       const text = await res.text();
-      alert(text);
+      alert("Presença confirmada com sucesso! Obrigado 💕");
+    
       form.reset();
+      botao.textContent = 'Confirmar Presença';
+      botao.disabled = false;
+    
     } catch (error) {
       console.error('Erro ao enviar confirmação:', error);
       alert("Ocorreu um erro ao registrar sua presença.");
+      const botao = form.querySelector('button');
+      botao.textContent = 'Confirmar Presença';
+      botao.disabled = false;
     }
+    
   });
 
   // Lista de presentes (estática)
@@ -132,3 +144,28 @@ document.addEventListener('DOMContentLoaded', function () {
     lista.appendChild(li);
   });
 });
+
+
+function atualizarContador() {
+  const dataCasamento = new Date("2025-08-01T00:00:00"); // Altere a data se necessário
+  const agora = new Date();
+  const diferenca = dataCasamento - agora;
+
+  if (diferenca <= 0) {
+    document.getElementById('contador').innerHTML = "<h2>É hoje! 💍</h2>";
+    return;
+  }
+
+  const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferenca / 1000) % 60);
+
+  document.getElementById("dias").textContent = String(dias).padStart(2, '0');
+  document.getElementById("horas").textContent = String(horas).padStart(2, '0');
+  document.getElementById("minutos").textContent = String(minutos).padStart(2, '0');
+  document.getElementById("segundos").textContent = String(segundos).padStart(2, '0');
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador(); // Inicializa imediatamente

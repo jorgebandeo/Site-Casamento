@@ -38,6 +38,56 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   }
   
+
+  /* contador de tempo vintage*/
+  #contador {
+    
+
+     background: transparent;
+     box-shadow: 0 0 0px ;
+     border-radius: 2px;
+     border-top: -2px;
+    /*box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);*/
+  }
+  
+  .flip-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    
+  }
+  
+  .flip-box {
+    background-color: var(--terracota);
+    color: var(--branco);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 70px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    /*box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);*/
+  }
+  
+  .flip-unit {
+    font-size: 2rem;
+    display: block;
+    background: #fff3ee;
+    color: var(--terracota-escuro);
+    padding: 0.3rem;
+    border-radius: 5px;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+  }
+  
+  .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  
+  
+  /* final de etilo */
+  
   form input,
   form select,
   form button {
