@@ -8,17 +8,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Casamento Jorge & Benícia</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+
 </head>
 
 <body onload="initGoogleAPI()">
 
   <header>
     <h1>Jorge & Benícia</h1>
-    <p>Estamos ansiosos para celebrar com você! 💍</p>
-    <p>Agosto de 2025</p>
+    
+    <img src="imagens\capa.png" alt="Capa" class="capa">
+    
   </header>
 
   <main>
+    <p style="font-family: 'Courier New', Courier, monospace; font-size: 1.2rem;">Agosto de 2025</p>
     <!-- Contador de tempo vintage-->
     <section id="contador">
       <div class="flip-countdown">
@@ -41,6 +45,8 @@
       </div>
     </section>
     
+    <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
+
 
     <!-- Confirmação de precença-->
     <section id="confirmacao">
@@ -52,13 +58,6 @@
           <ul id="autocompleteList" class="autocomplete-list hidden"></ul>
         </div>
         
-        
-
-
-      
-
-
-
         <select name="presenca" required>
           <option value="">Você irá?</option>
           <option value="sim">Sim, com muito amor!</option>
@@ -67,6 +66,8 @@
         <button type="submit">Confirmar Presença</button>
       </form>
     </section>
+
+    <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
 
     <section id="presentes">
       <h2>Nossa Lista de Presentes</h2>

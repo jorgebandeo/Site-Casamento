@@ -28,7 +28,7 @@ async function start() {
 
     preencherAutoComplete(nomes);
     window.listaNomes = nomes;
-    document.getElementById('inputNome').focus();
+
 
   } catch (error) {
     console.error('❌ Erro ao carregar convidados:', error);

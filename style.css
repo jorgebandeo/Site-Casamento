@@ -1,166 +1,280 @@
 :root {
-    --terracota: #E2725B;
-    --terracota-escuro: #B65C47;
-    --terracota-claro: #f3e7e2;
-    --branco: #fff;
-    --cinza: #333;
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--terracota-claro);
-    color: var(--cinza);
-    text-align: center;
-  }
-  
-  header {
-    background-color: var(--terracota);
-    color: var(--branco);
-    padding: 2rem 1rem;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin: 0;
-  }
-  
-  main {
-    padding: 2rem 1rem;
-  }
-  
-  section {
-    margin: 2rem auto;
+  --terracota: rgb(226, 114, 91);
+  --terracota-escuro: #B65C47;
+  --terracota-claro: #f3e7e2;
+  --branco: #fff;
+  --cinza: #333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--terracota-claro);
+  color: var(--cinza);
+  text-align: center;
+  background-image: radial-gradient(circle at top left, rgba(255,255,255,0.25) 0%, transparent 70%);
+  background-attachment: fixed;
+}
+
+header {
+  background-color: var(--terracota);
+  color: var(--branco);
+  padding: 2rem 1rem;
+  margin-bottom: -10px;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.05), transparent);
+
+  position: relative;
+  z-index: 0;
+
+  /* sombra visível */
+  box-shadow: 0 20px 10px -10px rgba(85, 34, 23, 0.6);
+}
+
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Alex Brush', cursive;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  margin-bottom: -20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+main {
+  padding: 2rem 1rem;
+}
+
+section {
+  margin: 2rem auto;
+  max-width: 600px;
+  background-color: var(--branco);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  background-image: linear-gradient(145deg, rgba(0,0,0,0.01) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* contador de tempo vintage */
+#contador {
+  margin: -1rem auto;
+  background: transparent;
+  box-shadow: 0 0 0px;
+  height: 100%;
+}
+
+.flip-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.flip-box {
+  background-color: var(--terracota);
+  color: var(--branco);
+  border-radius: 10px;
+  padding: 0.7rem;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 4px);
+  background-blend-mode: multiply;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.flip-unit {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff3ee;
+  color: var(--terracota-escuro);
+  padding: 0.7rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  height: 3rem;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.label {
+  font-size: 100%;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+
+
+/* final de estilo */
+
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fffefc;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
+}
+
+select {
+  display: flex;
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+form button {
+  max-width: 90%;
+  background-color: var(--terracota-escuro);
+  color: var(--branco);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background-color: var(--terracota);
+  transform: translateY(-1px);
+}
+
+ul#listaPresentes {
+  list-style: none;
+  padding: 0;
+}
+
+ul#listaPresentes li {
+  padding: 0.6rem;
+  border-bottom: 1px solid #ddd;
+}
+
+footer {
+  background-color: var(--terracota);
+  color: var(--branco);
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.autocomplete-wrapper {
+  display: flex;
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.autocomplete-list li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.hidden {
+  display: none;
+}
+
+/* divisorias */
+.divisoria {
+  position: relative;
+  display: block;
+  width: 12%;
+  max-width: 600px;
+  margin: 3rem auto;
+  z-index: 1;
+}
+
+.divisoria::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -100vw;
+  right: -100vw;
+  height: 2px;
+  background-color: var(--terracota-escuro);
+  z-index: -1;
+}
+
+    /*capa*/
+    /*divisorias*/
+  .capa {
+
+    width: 20%;
     max-width: 600px;
-    background-color: var(--branco);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: -110px;
+    overflow: hidden;
   }
   
 
-  /* contador de tempo vintage*/
-  #contador {
-    
+  @media (max-width: 480px) {
+    .flip-box {
+      padding: 0.6rem;
+      border-radius: 8px;
+    }
+  
+    .flip-unit {
+      font-size: 1.3rem;
+      padding: 0.5rem;
+    }
+  
+    .label {
+      font-size: 0.8rem;
+    }
+  
+    .flip-countdown {
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+  
+    #contador {
+      margin-left: 1px;
+      margin-right: 1px;
+    }
+    .capa {
+  
+      width: 80%;
 
-     background: transparent;
-     box-shadow: 0 0 0px ;
-     border-radius: 2px;
-     border-top: -2px;
-    /*box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);*/
-  }
-  
-  .flip-countdown {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+      margin-top: 10px;
+      margin-bottom: -100px;
+
+    }
+    header {
+      background-color: var(--terracota);
+      color: var(--branco);
+      padding: 2rem 1rem;
+      margin-bottom: -10px;
+      background-image: linear-gradient(to right, rgba(255,255,255,0.05), transparent);
     
+      position: relative;
+      z-index: 0;
+    
+      /* sombra visível */
+      box-shadow: 0 20px 15px 0px rgba(85, 34, 23, 0.3);
+    }
   }
-  
-  .flip-box {
-    background-color: var(--terracota);
-    color: var(--branco);
-    border-radius: 10px;
-    padding: 1rem;
-    width: 70px;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    /*box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);*/
-  }
-  
-  .flip-unit {
-    font-size: 2rem;
-    display: block;
-    background: #fff3ee;
-    color: var(--terracota-escuro);
-    padding: 0.3rem;
-    border-radius: 5px;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-  }
-  
-  .label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-  
-  
-  /* final de etilo */
-  
-  form input,
-  form select,
-  form button {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
-  
-  form button {
-    background-color: var(--terracota-escuro);
-    color: var(--branco);
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  form button:hover {
-    background-color: var(--terracota);
-  }
-  
-  ul#listaPresentes {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul#listaPresentes li {
-    padding: 0.6rem;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  footer {
-    background-color: var(--terracota);
-    color: var(--branco);
-    padding: 1rem;
-    margin-top: 2rem;
-  }
-  .autocomplete-wrapper {
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .autocomplete-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    border: 1px solid #ccc;
-    z-index: 100;
-    max-height: 200px;
-    overflow-y: auto;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 4px;
-  }
-  
-  .autocomplete-list li {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-  }
-  
-  .autocomplete-list li:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
