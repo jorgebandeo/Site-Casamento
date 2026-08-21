@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nome": "Processador e Liquidificador",
+    "descricao": "Um aliado prático e elegante para facilitar os preparos e deixar os momentos na cozinha ainda mais gostosos a dois.",
+    "valor_total": 403.81,
+    "valor_recolhido": 0,
+    "imagem_path": "imagens/ProcessadorLiquidificador.png",
+    "ativo": 1
+  },
+  {
+    "id": 2,
+    "nome": "Cafeteira Elétrica",
+    "descricao": "Para começar os dias juntos com café quentinho e muita conversa boa.",
+    "valor_total": 289.90,
+    "valor_recolhido": 120,
+    "imagem_path": "imagens/CafeteiraEletrica.png",
+    "ativo": 1
+  },
+  {
+    "id": 3,
+    "nome": "Jogo de Panelas",
+    "descricao": "Para os almoços, jantares e receitas que vão fazer parte da nossa casa.",
+    "valor_total": 699.90,
+    "valor_recolhido": 699.90,
+    "imagem_path": "imagens/JogoPanelas.png",
+    "ativo": 0
+  }
+]
