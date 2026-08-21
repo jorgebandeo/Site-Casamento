@@ -11,7 +11,7 @@
   {
     "id": 2,
     "nome": "Cafeteira Elétrica",
-    "descricao": "Presente mantido na demonstração local a partir da lista preliminar do projeto.",
+    "descricao": "",
     "valor_total": 299.90,
     "valor_recolhido": 75.00,
     "imagem_path": "",
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "nome": "Jantar Romântico",
-    "descricao": "Presente mantido na demonstração local a partir da lista preliminar do projeto.",
+    "descricao": "",
     "valor_total": 250.00,
     "valor_recolhido": 250.00,
     "imagem_path": "",
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "nome": "Panela de Pressão",
-    "descricao": "Presente mantido na demonstração local a partir da lista preliminar do projeto.",
+    "descricao": "",
     "valor_total": 219.90,
     "valor_recolhido": 0,
     "imagem_path": "",
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "nome": "Vale Viagem Lua de Mel",
-    "descricao": "Presente mantido na demonstração local a partir da lista preliminar do projeto.",
+    "descricao": "",
     "valor_total": 1000.00,
     "valor_recolhido": 600.00,
     "imagem_path": "",
@@ -47,7 +47,7 @@
   {
     "id": 6,
     "nome": "Kit Toalhas Bordadas",
-    "descricao": "Presente mantido na demonstração local a partir da lista preliminar do projeto.",
+    "descricao": "",
     "valor_total": 189.90,
     "valor_recolhido": 0,
     "imagem_path": "",
