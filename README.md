@@ -1,69 +1,56 @@
 # Site de Casamento — Jorge & Benícia 💍
 
-Projeto full stack reconstruído para portfólio a partir de um site de casamento real. A aplicação centraliza convite personalizado, confirmação de presença, orientações aos convidados e lista de presentes.
+Este repositório preserva o projeto do site de casamento mantendo a identidade visual e a estrutura que foram criadas originalmente.
 
-A implementação original começou em HTML/CSS/JavaScript e evoluiu para PHP, MySQL e integração Pix no backend. Esta versão pública preserva a arquitetura e a experiência sem publicar dados pessoais, tokens, certificados ou credenciais reais.
+A versão pública foi organizada para portfólio sem redesenhar o site: foram mantidas a paleta terracota, a imagem de capa, a divisória floral, o contador regressivo, a confirmação de presença e a lista de presentes.
 
-## Funcionalidades
+## Estrutura visual preservada
 
-- 💌 convite personalizado por convidado e idioma;
-- ✅ RSVP com nome, presença, acompanhantes e observações;
-- 🎁 lista de presentes carregada dinamicamente por JSON;
-- 📊 progresso de contribuição e estado ativo/inativo;
-- 👗 página de vestimenta;
-- 📍 página de localização demonstrativa;
-- 🗄️ schema MySQL e endpoints PHP documentados;
-- 💳 arquitetura Pix preservada como demonstração segura;
-- 🚀 deploy automatizado com GitHub Actions e GitHub Pages.
+- header terracota com sombra;
+- título `Jorge & Benícia` com a fonte Alex Brush;
+- `imagens/capa.png` no header;
+- fundo terracota claro;
+- contador regressivo no estilo flip/vintage;
+- `imagens/divisoria.png` entre as seções;
+- seção de confirmação de presença;
+- seção de lista de presentes;
+- footer terracota.
 
-## Tecnologias
-
-**Front-end:** HTML5, CSS3, JavaScript Vanilla, Fetch API e Web Storage.
-
-**Backend/documentação:** PHP 8+, PDO, MySQL e modelagem relacional.
-
-**DevOps:** Git, GitHub Actions e GitHub Pages.
-
-## Estrutura
+## Arquivos principais
 
 ```text
 .
-├── .github/workflows/pages.yml
-├── assets/
-│   ├── css/styles.css
-│   └── js/
-├── backend/
-├── data/presentes.json
-├── docs/
-├── sql/schema.sql
 ├── index.html
-├── convite.html
-├── confirmacao.html
-├── presentes.html
-├── vestimenta.html
-└── local.html
+├── style.css
+├── script.js
+├── imagens/
+│   ├── capa.png
+│   └── divisoria.png
+├── backend/
+├── docs/
+├── sql/
+└── .github/workflows/pages.yml
 ```
 
-## Demonstração
+## Evolução técnica do projeto
 
-O front-end funciona como site estático. A confirmação de presença usa `localStorage` e a lista de presentes usa `data/presentes.json`, permitindo demonstrar a experiência sem servidor.
+O projeto começou em HTML, CSS e JavaScript e, durante seu desenvolvimento, passou a utilizar backend PHP, banco MySQL e integrações relacionadas a confirmação de presença e pagamentos Pix.
 
-O backend em `backend/` documenta como o projeto operava com PHP/MySQL. O endpoint `gerar_pix_demo.php` é deliberadamente desativado e não cria cobranças reais.
+Os diretórios `backend/`, `sql/` e `docs/` servem apenas para documentar essa evolução técnica. Eles não alteram a aparência do site publicado no GitHub Pages.
 
 ## Segurança
 
-Credenciais, certificados, chaves Pix, CPF e dados reais de convidados não fazem parte desta versão. `backend/config.php` é ignorado pelo Git; somente `config.example.php` é versionado.
+A integração original com Google Sheets utilizava credenciais no JavaScript. Essas credenciais não são reutilizadas na versão pública atual.
 
-O script legado que continha referências antigas de integração foi removido do estado atual da reconstrução. Consulte `docs/SECURITY.md`.
+Da mesma forma, nenhuma chave Pix, certificado, senha de banco, token ou dado pessoal de convidado é publicado no código atual.
 
-## História do projeto
+## GitHub Pages
 
-O repositório original ainda preservava uma versão inicial do site, incluindo paleta terracota, contador regressivo, confirmação via Google Sheets e imagens. A reconstrução foi adicionada como uma nova etapa para manter o histórico de evolução do projeto.
+O workflow publica somente os arquivos que compõem o site original:
 
-Consulte `docs/RECOVERY.md` e `docs/ARCHITECTURE.md` para mais detalhes.
+- `index.html`;
+- `style.css`;
+- `script.js`;
+- pasta `imagens/`.
 
-## Publicação
-
-O workflow em `.github/workflows/pages.yml` publica somente os arquivos necessários ao GitHub Pages: HTML, `assets/` e `data/`.
-
-> Projeto reconstruído para fins de portfólio. Integrações financeiras e dados pessoais reais foram removidos.
+A intenção deste repositório é apresentar o projeto como ele foi construído, e não redesenhá-lo para parecer um projeto diferente.
