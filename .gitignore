@@ -1,0 +1,23 @@
+# Credenciais / backend local
+backend/config.php
+.env
+.env.*
+!*.example
+*.p12
+*.pem
+*.key
+*.crt
+*.pfx
+
+# Artefatos locais
+_site/
+*.zip
+
+# SO/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
