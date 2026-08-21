@@ -1,9 +1,20 @@
+@font-face {
+  font-family: 'SnellRoundhand';
+  src: url('fontes/snell-roundhand/SnellRoundhand-BoldScript.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --terracota: rgb(226, 114, 91);
   --terracota-escuro: #B65C47;
   --terracota-claro: #f3e7e2;
   --branco: #fff;
   --cinza: #333;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -24,21 +35,25 @@ header {
   background-image: linear-gradient(to right, rgba(255,255,255,0.05), transparent);
   position: relative;
   z-index: 0;
-  box-shadow: 0 20px 10px -10px rgba(85, 34, 23, 0.6);
+  box-shadow: 0 20px 15px 0 rgba(85, 34, 23, 0.3);
 }
 
 h1 {
   font-size: 3rem;
-  margin: 0;
-  font-family: 'Alex Brush', cursive;
+  margin: 0 0 -20px;
+  font-family: 'SnellRoundhand', 'Alex Brush', cursive;
   font-weight: normal;
   letter-spacing: 0.5px;
-  margin-bottom: -20px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 
 main {
   padding: 2rem 1rem;
+}
+
+.data-casamento {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
 }
 
 section {
@@ -47,15 +62,16 @@ section {
   background-color: var(--branco);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   background-image: linear-gradient(145deg, rgba(0,0,0,0.01) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
+/* contador de tempo vintage */
 #contador {
   margin: -1rem auto;
   background: transparent;
-  box-shadow: 0 0 0px;
+  box-shadow: 0 0 0;
   height: 100%;
 }
 
@@ -73,10 +89,10 @@ section {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   background-image:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 3px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 4px);
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0, rgba(0,0,0,0.03) 1px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 4px);
   background-blend-mode: multiply;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07);
 }
 
 .flip-unit {
@@ -100,6 +116,32 @@ section {
   opacity: 0.8;
 }
 
+/* atalhos adicionados abaixo do contador */
+.atalhos {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.atalhos button {
+  background-color: var(--terracota-escuro);
+  color: var(--branco);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.atalhos button:hover {
+  background-color: var(--terracota);
+  transform: translateY(-1px);
+}
+
 form input,
 form select,
 form button {
@@ -117,7 +159,7 @@ select {
   display: flex;
   position: relative;
   max-width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto 0;
 }
 
 form button {
@@ -135,22 +177,12 @@ form button:hover {
   transform: translateY(-1px);
 }
 
-ul#listaPresentes {
-  list-style: none;
-  padding: 0;
-}
-
-ul#listaPresentes li {
-  padding: 0.6rem;
-  border-bottom: 1px solid #ddd;
-}
-
 footer {
   background-color: var(--terracota);
   color: var(--branco);
   padding: 1rem;
   margin-top: 2rem;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .autocomplete-wrapper {
@@ -173,13 +205,14 @@ footer {
   list-style: none;
   padding: 0;
   margin: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 4px;
 }
 
 .autocomplete-list li {
   padding: 0.75rem 1rem;
   cursor: pointer;
+  text-align: left;
 }
 
 .autocomplete-list li:hover {
@@ -187,9 +220,10 @@ footer {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
+/* divisórias */
 .divisoria {
   position: relative;
   display: block;
@@ -217,25 +251,118 @@ footer {
   overflow: hidden;
 }
 
-/* Ajustes que foram feitos posteriormente no projeto */
+/* lista de presentes */
 #presentes {
   width: 80%;
+  max-width: 1200px;
 }
 
-#presentes h2 {
+#presentes > h2 {
   display: inline-block;
   background-color: var(--branco);
   border-radius: 10px;
   padding: 0.35rem 0.8rem;
 }
 
-.present-card {
-  text-align: center;
-  align-items: center;
+#listaPresentes {
+  list-style: none;
+  padding: 1rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
 }
 
-.present-card.desativado {
+.presente-card {
+  width: 100%;
+  position: relative;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--branco);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.presente-card img {
+  width: 100%;
+  max-height: 230px;
+  object-fit: contain;
+  position: relative;
+  z-index: 0;
+}
+
+.card h3 {
+  margin: 0.8rem 0 0.4rem;
+}
+
+.card p {
+  margin: 0.35rem 0;
+}
+
+.valor-restante {
+  font-weight: bold;
+  color: var(--terracota-escuro);
+}
+
+.bt_div {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.bt_Contribuir {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--terracota-escuro);
+  color: var(--branco);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.bt_Contribuir:hover {
+  background-color: var(--terracota);
+}
+
+.fundo-confere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: rgba(0,150,0,0.25);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.card.desativado {
   opacity: 0.5;
+  transform: scale(0.98);
+  filter: blur(0.5px);
+  transition: all 0.3s ease-in-out;
+}
+
+.card.desativado:hover {
+  transform: scale(1);
+  filter: none;
+  opacity: 0.7;
+}
+
+.presente-recebido {
+  font-weight: bold;
+  color: var(--terracota-escuro);
+  margin-top: auto;
 }
 
 @media (max-width: 480px) {
@@ -270,13 +397,19 @@ footer {
   }
 
   header {
-    background-color: var(--terracota);
-    color: var(--branco);
     padding: 2rem 1rem;
     margin-bottom: -10px;
-    background-image: linear-gradient(to right, rgba(255,255,255,0.05), transparent);
-    position: relative;
-    z-index: 0;
-    box-shadow: 0 20px 15px 0px rgba(85, 34, 23, 0.3);
+    box-shadow: 0 20px 15px 0 rgba(85,34,23,0.3);
+  }
+
+  #presentes {
+    width: 95%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  #listaPresentes {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
   }
 }

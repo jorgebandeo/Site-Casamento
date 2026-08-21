@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casamento Jorge & Benícia</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=<?= time() ?>">
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <header>
     <h1>Jorge & Benícia</h1>
     <img src="imagens/capa.png" alt="Capa" class="capa">
   </header>
 
   <main>
-    <p style="font-family: 'Courier New', Courier, monospace; font-size: 1.2rem;">Agosto de 2025</p>
+    <p class="data-casamento">Agosto de 2025</p>
 
     <section id="contador">
       <div class="flip-countdown">
-        <div class="flip-box">
-          <span id="dias" class="flip-unit">00</span>
-          <span class="label">dias</span>
-        </div>
-        <div class="flip-box">
-          <span id="horas" class="flip-unit">00</span>
-          <span class="label">horas</span>
-        </div>
-        <div class="flip-box">
-          <span id="minutos" class="flip-unit">00</span>
-          <span class="label">min</span>
-        </div>
-        <div class="flip-box">
-          <span id="segundos" class="flip-unit">00</span>
-          <span class="label">seg</span>
-        </div>
+        <div class="flip-box"><span id="dias" class="flip-unit">00</span><span class="label">dias</span></div>
+        <div class="flip-box"><span id="horas" class="flip-unit">00</span><span class="label">horas</span></div>
+        <div class="flip-box"><span id="minutos" class="flip-unit">00</span><span class="label">min</span></div>
+        <div class="flip-box"><span id="segundos" class="flip-unit">00</span><span class="label">seg</span></div>
       </div>
     </section>
+
+    <div class="atalhos">
+      <button type="button" onclick="document.getElementById('confirmacao').scrollIntoView({behavior:'smooth'})">Confirmar Presença</button>
+      <button type="button" onclick="document.getElementById('presentes').scrollIntoView({behavior:'smooth'})">Ver Presentes</button>
+      <button type="button" onclick="window.location.href='vestimenta.html'">Tipo de Vestimenta</button>
+    </div>
 
     <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
 
@@ -44,7 +37,7 @@
       <h2>Confirmação de Presença</h2>
       <form id="formPresenca">
         <div class="autocomplete-wrapper">
-          <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" required />
+          <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" autocomplete="off" required>
           <ul id="autocompleteList" class="autocomplete-list hidden"></ul>
         </div>
 
@@ -53,6 +46,7 @@
           <option value="sim">Sim, com muito amor!</option>
           <option value="nao">Infelizmente não poderei.</option>
         </select>
+
         <button type="submit">Confirmar Presença</button>
       </form>
     </section>
@@ -60,7 +54,7 @@
     <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
 
     <section id="presentes">
-      <h2>Nossa Lista de Presentes</h2>
+      <h2>Lista de Presentes</h2>
       <ul id="listaPresentes"></ul>
     </section>
   </main>
@@ -69,6 +63,6 @@
     <p>Com carinho, Jorge & Benícia • Agosto 2025</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=<?= time() ?>"></script>
 </body>
 </html>

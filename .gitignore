@@ -1,23 +1,7 @@
-# Credenciais / backend local
-backend/config.php
+config.php
+meu-pix/config.php
+meu-pix/certificado.pem
+meu-pix/vendor/
+vendor/
 .env
-.env.*
-!*.example
-*.p12
-*.pem
-*.key
-*.crt
-*.pfx
-
-# Artefatos locais
-_site/
-*.zip
-
-# SO/IDE
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-
-# Logs
 *.log
