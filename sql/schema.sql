@@ -1,0 +1,44 @@
+-- Schema demonstrativo do projeto original.
+-- Não contém dados pessoais reais nem credenciais.
+
+CREATE DATABASE IF NOT EXISTS casamento_portfolio
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE casamento_portfolio;
+
+CREATE TABLE convidados (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(160) NOT NULL,
+  slug VARCHAR(180) NOT NULL UNIQUE,
+  idioma ENUM('pt','es') NOT NULL DEFAULT 'pt',
+  confirmado TINYINT(1) NULL,
+  acompanhantes SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+  observacao VARCHAR(500) NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE produtos (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(180) NOT NULL,
+  descricao VARCHAR(500) NULL,
+  valor_total DECIMAL(10,2) NOT NULL,
+  valor_recolhido DECIMAL(10,2) NOT NULL DEFAULT 0,
+  imagem_path VARCHAR(255) NULL,
+  ativo TINYINT(1) NOT NULL DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE transacoes (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  txid VARCHAR(120) NOT NULL UNIQUE,
+  id_produto INT UNSIGNED NOT NULL,
+  id_convidado INT UNSIGNED NULL,
+  nome_informado VARCHAR(160) NULL,
+  valor DECIMAL(10,2) NOT NULL,
+  status ENUM('CRIADA','PAGA','EXPIRADA','CANCELADA') NOT NULL DEFAULT 'CRIADA',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  paid_at TIMESTAMP NULL,
+  CONSTRAINT fk_transacao_produto FOREIGN KEY (id_produto) REFERENCES produtos(id),
+  CONSTRAINT fk_transacao_convidado FOREIGN KEY (id_convidado) REFERENCES convidados(id)
+);
