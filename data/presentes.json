@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nome": "Jantar especial a dois",
+    "descricao": "Uma noite gostosa para criar memórias e brindar essa nova fase juntos.",
+    "valor_total": 250.00,
+    "valor_recolhido": 175.00,
+    "ativo": true,
+    "emoji": "🍷"
+  },
+  {
+    "id": 2,
+    "nome": "Processador e Liquidificador",
+    "descricao": "Um aliado prático e elegante para facilitar os preparos e deixar os momentos na cozinha ainda mais gostosos a dois.",
+    "valor_total": 403.81,
+    "valor_recolhido": 403.81,
+    "ativo": false,
+    "emoji": "🥤"
+  },
+  {
+    "id": 3,
+    "nome": "Cantinho do café",
+    "descricao": "Para começar os dias com cheirinho de café e muitos planos compartilhados.",
+    "valor_total": 489.90,
+    "valor_recolhido": 120.00,
+    "ativo": true,
+    "emoji": "☕"
+  },
+  {
+    "id": 4,
+    "nome": "Jogo de panelas",
+    "descricao": "Para as receitas do dia a dia, almoços de domingo e experiências culinárias em dupla.",
+    "valor_total": 699.90,
+    "valor_recolhido": 0,
+    "ativo": true,
+    "emoji": "🍳"
+  },
+  {
+    "id": 5,
+    "nome": "Passeio na lua de mel",
+    "descricao": "Um empurrãozinho para transformar um dia da viagem em uma lembrança inesquecível.",
+    "valor_total": 850.00,
+    "valor_recolhido": 510.00,
+    "ativo": true,
+    "emoji": "✈️"
+  },
+  {
+    "id": 6,
+    "nome": "Café da manhã na lua de mel",
+    "descricao": "Porque começar o dia sem pressa, juntos e em um lugar especial, também é presente.",
+    "valor_total": 180.00,
+    "valor_recolhido": 180.00,
+    "ativo": false,
+    "emoji": "🥐"
+  }
+]
