@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Confirmar presença — Jorge & Benícia</title><link rel="stylesheet" href="assets/css/styles.css"></head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html">Jorge & Benícia</a><button class="menu-toggle" aria-label="Abrir menu">☰</button><nav class="nav-links"><a href="index.html">Início</a><a href="convite.html">Convite</a><a class="active" href="confirmacao.html">Confirmar presença</a><a href="presentes.html">Presentes</a><a href="vestimenta.html">Vestimenta</a><a href="local.html">Local</a></nav></div></header>
+<main>
+<section class="section">
+  <div class="container">
+    <div class="section-header center"><span class="eyebrow">RSVP</span><h2>Confirme sua presença</h2><p>Preencha os dados abaixo. Nesta versão de portfólio, a resposta é salva somente no navegador usando localStorage.</p></div>
+    <div class="card form-card">
+      <form id="rsvp-form" class="form-grid">
+        <div class="field full"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" placeholder="Seu nome" required></div>
+        <div class="field"><label for="presenca">Você poderá comparecer?</label><select id="presenca" name="presenca" required><option value="">Selecione</option><option value="sim">Sim, estarei presente</option><option value="nao">Infelizmente não poderei</option></select></div>
+        <div class="field"><label for="acompanhantes">Acompanhantes</label><input id="acompanhantes" name="acompanhantes" type="number" min="0" max="10" value="0"></div>
+        <div class="field full"><label for="mensagem">Mensagem ou observação</label><textarea id="mensagem" name="mensagem" placeholder="Escreva uma mensagem para os noivos"></textarea></div>
+        <div class="field full"><button class="btn btn-primary" type="submit">Enviar confirmação</button><div id="rsvp-status" class="form-status" role="status"></div></div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="section compact"><div class="container"><div class="code-note"><strong>No projeto original:</strong> esta etapa era integrada a um backend PHP/MySQL. O exemplo de schema e endpoint está incluído no repositório para demonstrar a arquitetura sem publicar credenciais reais.</div></div></section>
+</main>
+<footer><div class="container"><p>Projeto de portfólio · <span data-year></span></p></div></footer>
+<script src="assets/js/common.js"></script><script src="assets/js/rsvp.js"></script>
+</body></html>
