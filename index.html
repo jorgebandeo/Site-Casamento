@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casamento Jorge & Benícia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Jorge & Benícia</h1>
+    <img src="imagens/capa.png" alt="Capa" class="capa">
+  </header>
+
+  <main>
+    <p class="data-casamento">Agosto de 2025</p>
+
+    <section id="contador">
+      <div class="flip-countdown">
+        <div class="flip-box"><span id="dias" class="flip-unit">00</span><span class="label">dias</span></div>
+        <div class="flip-box"><span id="horas" class="flip-unit">00</span><span class="label">horas</span></div>
+        <div class="flip-box"><span id="minutos" class="flip-unit">00</span><span class="label">min</span></div>
+        <div class="flip-box"><span id="segundos" class="flip-unit">00</span><span class="label">seg</span></div>
+      </div>
+    </section>
+
+    <div class="atalhos">
+      <button type="button" onclick="document.getElementById('confirmacao').scrollIntoView({behavior:'smooth'})">Confirmar Presença</button>
+      <button type="button" onclick="document.getElementById('presentes').scrollIntoView({behavior:'smooth'})">Ver Presentes</button>
+      <button type="button" onclick="window.location.href='vestimenta.html'">Tipo de Vestimenta</button>
+    </div>
+
+    <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
+
+    <section id="confirmacao">
+      <h2>Confirmação de Presença</h2>
+      <form id="formPresenca">
+        <div class="autocomplete-wrapper">
+          <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" autocomplete="off" required>
+          <ul id="autocompleteList" class="autocomplete-list hidden"></ul>
+        </div>
+
+        <select name="presenca" required>
+          <option value="">Você irá?</option>
+          <option value="sim">Sim, com muito amor!</option>
+          <option value="nao">Infelizmente não poderei.</option>
+        </select>
+
+        <button type="submit">Confirmar Presença</button>
+      </form>
+    </section>
+
+    <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
+
+    <section id="presentes">
+      <h2>Lista de Presentes</h2>
+      <ul id="listaPresentes">
+        <li class="presente-card">
+          <div class="card">
+            <img src="imagens/ProcessadorLiquidificador.png" alt="Processador e Liquidificador" onerror="this.style.display='none'">
+            <h3>Processador e Liquidificador</h3>
+            <p>Um aliado prático e elegante para facilitar os preparos e deixar os momentos na cozinha ainda mais gostosos a dois.</p>
+            <p class="valor-restante">Restante: R$ 403,81</p>
+            <div class="bt_div">
+              <button type="button" class="bt_Contribuir">Contribuir</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Com carinho, Jorge & Benícia • Agosto 2025</p>
+  </footer>
+
+  <script src="script-pages.js"></script>
+</body>
+</html>
