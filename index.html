@@ -1,92 +1,97 @@
-
-
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Casamento Jorge & Benícia</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Projeto de site de casamento reconstruído para portfólio.">
+  <title>Jorge & Benícia — Nosso Casamento</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
-<body onload="initGoogleAPI()">
-
-  <header>
-    <h1>Jorge & Benícia</h1>
-    
-    <img src="imagens\capa.png" alt="Capa" class="capa">
-    
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Jorge & Benícia</a>
+      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+      <nav class="nav-links">
+        <a class="active" href="index.html">Início</a>
+        <a href="convite.html">Convite</a>
+        <a href="confirmacao.html">Confirmar presença</a>
+        <a href="presentes.html">Presentes</a>
+        <a href="vestimenta.html">Vestimenta</a>
+        <a href="local.html">Local</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <p style="font-family: 'Courier New', Courier, monospace; font-size: 1.2rem;">Agosto de 2025</p>
-    <!-- Contador de tempo vintage-->
-    <section id="contador">
-      <div class="flip-countdown">
-        <div class="flip-box">
-          <span id="dias" class="flip-unit">00</span>
-          <span class="label">dias</span>
-        </div>
-        <div class="flip-box">
-          <span id="horas" class="flip-unit">00</span>
-          <span class="label">horas</span>
-        </div>
-        <div class="flip-box">
-          <span id="minutos" class="flip-unit">00</span>
-          <span class="label">min</span>
-        </div>
-        <div class="flip-box">
-          <span id="segundos" class="flip-unit">00</span>
-          <span class="label">seg</span>
+    <section class="hero">
+      <div class="container hero-card">
+        <span class="eyebrow">Nosso casamento</span>
+        <h1>Jorge & Benícia</h1>
+        <p class="hero-subtitle">Criamos este espaço para reunir tudo sobre o nosso grande dia e compartilhar um pouco dessa história com quem faz parte dela.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="confirmacao.html">Confirmar presença</a>
+          <a class="btn btn-secondary" href="presentes.html">Lista de presentes</a>
         </div>
       </div>
     </section>
-    
-    <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
 
-
-    <!-- Confirmação de precença-->
-    <section id="confirmacao">
-      <h2>Confirmação de Presença</h2>
-      <form id="formPresenca">
-
-        <div class="autocomplete-wrapper">
-          <input type="text" name="nome" id="inputNome" placeholder="Digite seu nome" required />
-          <ul id="autocompleteList" class="autocomplete-list hidden"></ul>
+    <section class="section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="eyebrow">Bem-vindos</span>
+          <h2>Um site feito com carinho para o nosso dia</h2>
+          <p>Esta reconstrução preserva a proposta do projeto original: uma experiência leve, responsiva e personalizada para convidados.</p>
         </div>
-        
-        <select name="presenca" required>
-          <option value="">Você irá?</option>
-          <option value="sim">Sim, com muito amor!</option>
-          <option value="nao">Infelizmente não poderei.</option>
-        </select>
-        <button type="submit">Confirmar Presença</button>
-      </form>
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="icon-box">💌</div>
+            <h3>Convite personalizado</h3>
+            <p>Envelope animado, identificação do convidado por URL e suporte a português ou espanhol.</p>
+            <a class="btn btn-ghost" href="convite.html?id=debora-luana">Abrir demonstração</a>
+          </article>
+          <article class="card">
+            <div class="icon-box">✅</div>
+            <h3>Confirmação de presença</h3>
+            <p>Formulário pensado para registrar confirmação, acompanhantes e observações do convidado.</p>
+            <a class="btn btn-ghost" href="confirmacao.html">Ver formulário</a>
+          </article>
+          <article class="card">
+            <div class="icon-box">🎁</div>
+            <h3>Lista de presentes</h3>
+            <p>Cards dinâmicos, progresso de contribuição e destaque visual para itens já presenteados.</p>
+            <a class="btn btn-ghost" href="presentes.html">Ver presentes</a>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <img src="imagens/divisoria.png" alt="Divisória decorativa" class="divisoria">
+    <section class="section compact">
+      <div class="container grid grid-2">
+        <div class="card soft">
+          <span class="eyebrow">Programação</span>
+          <h2>O grande dia</h2>
+          <p>Uma estrutura simples para apresentar horários e orientar os convidados sem sobrecarregar a página.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-time">16:30</div><div class="timeline-content"><h3>Recepção</h3><p>Chegada dos convidados e acomodação.</p></div></div>
+          <div class="timeline-item"><div class="timeline-time">17:00</div><div class="timeline-content"><h3>Cerimônia</h3><p>O momento principal da celebração.</p></div></div>
+          <div class="timeline-item"><div class="timeline-time">18:00</div><div class="timeline-content"><h3>Festa</h3><p>Jantar, música, brindes e muita alegria.</p></div></div>
+        </div>
+      </div>
+    </section>
 
-    <section id="presentes">
-      <h2>Nossa Lista de Presentes</h2>
-      <ul id="listaPresentes">
-      
-      </ul>
+    <section class="section">
+      <div class="container card" style="text-align:center;max-width:850px">
+        <span class="eyebrow">Portfólio</span>
+        <h2>Projeto reconstruído para GitHub Pages</h2>
+        <p>Os fluxos que originalmente dependiam de PHP, MySQL e pagamento Pix foram substituídos por uma demonstração segura. O repositório também inclui exemplos de backend e banco de dados para documentar a arquitetura.</p>
+        <a class="btn btn-primary" href="presentes.html">Explorar o projeto</a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>Com carinho, Jorge & Benícia • Agosto 2025</p>
-    <p>modelo 0.4</p>
-  </footer>
-
-
-  <script src="https://apis.google.com/js/api.js"></script>
-
-
-  <script src="script.js"></script>
-
+  <footer><div class="container"><p>Projeto de portfólio · <span data-year></span> · Jorge & Benícia</p></div></footer>
+  <script src="assets/js/common.js"></script>
 </body>
 </html>
