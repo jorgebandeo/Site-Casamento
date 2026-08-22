@@ -1,43 +1,29 @@
-const API_KEY = 'AIzaSyAW5NHrRfdmMwLDeax9Ge-w20Td0sQXYnE';
-const SHEET_ID = '11-lA-Cv1B25-UgL8TGHBBVWZ6-wqOJ2Ie3Nfa-jxrZE';
-const RANGE = "'Página1'!A2:A";
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxt0K8uFLFkbTi5svZaT1ksp3ZECkz5wkTIe0f-n1WrUSo0OnaprKmQT4dvR60aVOqBuw/exec'; // 🔁 coloque aqui a URL do Apps Script
+let listaNomes = [];
 
-function initGoogleAPI() {
-  gapi.load('client', start);
-}
+document.addEventListener('DOMContentLoaded', () => {
+  carregarConvidados();
+  configurarFormularioPresenca();
+  carregarPresentes();
+  atualizarContador();
+  setInterval(atualizarContador, 1000);
+});
 
-async function start() {
-  await gapi.client.init({
-    apiKey: API_KEY,
-    discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-  });
-
+async function carregarConvidados() {
   try {
-    const response = await gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: SHEET_ID,
-      range: RANGE,
-    });
-
-    console.log("🔍 Dados brutos da API:", response.result.values);
-
-    const dados = response.result.values || [];
-    const nomes = dados.flat().filter(nome => nome.trim() !== '');
-
-    console.log("✅ Nomes lidos:", nomes);
-
-    preencherAutoComplete(nomes);
-    window.listaNomes = nomes;
-
-
+    const response = await fetch('listar_convidados.php?v=' + Math.random());
+    const nomes = await response.json();
+    listaNomes = Array.isArray(nomes) ? nomes : [];
+    window.listaNomes = listaNomes;
+    preencherAutoComplete(listaNomes);
   } catch (error) {
-    console.error('❌ Erro ao carregar convidados:', error);
+    console.error('Erro ao carregar convidados:', error);
   }
 }
 
 function preencherAutoComplete(nomes) {
   const input = document.getElementById('inputNome');
   const list = document.getElementById('autocompleteList');
+  if (!input || !list) return;
 
   input.addEventListener('input', function () {
     const filtro = this.value.toLowerCase();
@@ -46,9 +32,11 @@ function preencherAutoComplete(nomes) {
     if (!filtro) {
       list.classList.add('hidden');
       return;
-    }   
+    }
 
-    const resultados = nomes.filter(nome => nome.toLowerCase().includes(filtro));
+    const resultados = nomes.filter(nome =>
+      String(nome).toLowerCase().includes(filtro)
+    );
 
     if (resultados.length === 0) {
       list.classList.add('hidden');
@@ -68,91 +56,148 @@ function preencherAutoComplete(nomes) {
     list.classList.remove('hidden');
   });
 
-  // Fecha a lista se clicar fora
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.autocomplete-wrapper')) {
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.autocomplete-wrapper')) {
       list.classList.add('hidden');
     }
   });
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
+function configurarFormularioPresenca() {
   const form = document.getElementById('formPresenca');
+  if (!form) return;
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+
     const nome = form.nome.value.trim();
     const presenca = form.presenca.value;
 
     if (!nome || !presenca) {
-      alert("Preencha seu nome e selecione uma opção de presença.");
+      alert('Preencha seu nome e selecione uma opção de presença.');
       return;
     }
 
-    const nomes = window.listaNomes || [];
-    const existe = nomes.some(n => n.trim().toLowerCase() === nome.toLowerCase());
+    const existe = (window.listaNomes || []).some(
+      item => String(item).trim().toLowerCase() === nome.toLowerCase()
+    );
 
     if (!existe) {
-      alert("Nome não encontrado na lista. Verifique se digitou corretamente.");
+      alert('Nome não encontrado na lista. Verifique se digitou corretamente.');
       return;
     }
 
+    const botao = form.querySelector('button[type="submit"]');
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+
     try {
-      const botao = form.querySelector('button');
-      botao.disabled = true;
-      botao.textContent = 'Enviando...';
-    
-      const res = await fetch(WEBAPP_URL, {
+      const response = await fetch('confirmar_presenca.php?v=' + Math.random(), {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({ nome, presenca })
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({nome, presenca})
       });
-    
-      const text = await res.text();
-      alert("Presença confirmada com sucesso! Obrigado 💕");
-    
+
+      if (!response.ok) throw new Error('Falha ao registrar presença');
+
+      alert('Presença confirmada com sucesso! Obrigado 💕');
       form.reset();
-      botao.textContent = 'Confirmar Presença';
-      botao.disabled = false;
-    
     } catch (error) {
       console.error('Erro ao enviar confirmação:', error);
-      alert("Ocorreu um erro ao registrar sua presença.");
-      const botao = form.querySelector('button');
+      alert('Ocorreu um erro ao registrar sua presença.');
+    } finally {
       botao.textContent = 'Confirmar Presença';
       botao.disabled = false;
     }
-    
   });
+}
 
-  // Lista de presentes (estática)
-  const presentes = [
-    'Cafeteira Elétrica',
-    'Jantar Romântico',
-    'Panela de Pressão',
-    'Vale Viagem Lua de Mel',
-    'Kit Toalhas Bordadas'
-  ];
-
+async function carregarPresentes() {
   const lista = document.getElementById('listaPresentes');
-  presentes.forEach(presente => {
-    const li = document.createElement('li');
-    li.textContent = presente;
-    lista.appendChild(li);
-  });
-});
+  if (!lista) return;
 
+  try {
+    const response = await fetch('get_presentes.php?v=' + Math.random());
+    const presentes = await response.json();
+    lista.innerHTML = '';
+
+    presentes.forEach(p => {
+      const total = Number(p.valor_total || 0);
+      const recolhido = Number(p.valor_recolhido || 0);
+      const restante = Math.max(0, total - recolhido);
+      const esgotado = Number(p.ativo) === 0 || restante <= 0;
+
+      const li = document.createElement('li');
+      li.className = 'presente-card';
+
+      const card = document.createElement('div');
+      card.className = `card${esgotado ? ' desativado' : ''}`;
+
+      if (esgotado) {
+        const confere = document.createElement('div');
+        confere.className = 'fundo-confere';
+        confere.textContent = '✓';
+        card.appendChild(confere);
+      }
+
+      const img = document.createElement('img');
+      img.src = `${p.imagem_path}?v=${Math.random()}`;
+      img.alt = p.nome;
+      card.appendChild(img);
+
+      const titulo = document.createElement('h3');
+      titulo.textContent = p.nome;
+      card.appendChild(titulo);
+
+      const descricao = document.createElement('p');
+      descricao.textContent = p.descricao || '';
+      card.appendChild(descricao);
+
+      if (!esgotado) {
+        const valor = document.createElement('p');
+        valor.className = 'valor-restante';
+        valor.textContent = `Restante: ${formatarMoeda(restante)}`;
+        card.appendChild(valor);
+
+        const btDiv = document.createElement('div');
+        btDiv.className = 'bt_div';
+
+        const botao = document.createElement('button');
+        botao.type = 'button';
+        botao.className = 'bt_Contribuir';
+        botao.textContent = 'Contribuir';
+        botao.onclick = () => {
+          window.location.href = `presente.php?id=${p.id}&v=${Math.floor(Math.random() * 1000000)}`;
+        };
+
+        btDiv.appendChild(botao);
+        card.appendChild(btDiv);
+      } else {
+        const recebido = document.createElement('p');
+        recebido.className = 'presente-recebido';
+        recebido.textContent = '🎁 Presente já recebido com carinho!';
+        card.appendChild(recebido);
+      }
+
+      li.appendChild(card);
+      lista.appendChild(li);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar presentes:', error);
+    lista.innerHTML = '<li>Não foi possível carregar a lista de presentes.</li>';
+  }
+}
 
 function atualizarContador() {
-  const dataCasamento = new Date("2025-08-01T00:00:00"); // Altere a data se necessário
+  const dataCasamento = new Date('2025-08-15T12:00:00');
   const agora = new Date();
   const diferenca = dataCasamento - agora;
+  const contador = document.getElementById('contador');
+
+  if (!contador) return;
 
   if (diferenca <= 0) {
-    document.getElementById('contador').innerHTML = "<h2>É hoje! 💍</h2>";
+    contador.innerHTML = '<h2>É hoje! 💍</h2>';
     return;
   }
 
@@ -161,11 +206,15 @@ function atualizarContador() {
   const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
   const segundos = Math.floor((diferenca / 1000) % 60);
 
-  document.getElementById("dias").textContent = String(dias).padStart(2, '0');
-  document.getElementById("horas").textContent = String(horas).padStart(2, '0');
-  document.getElementById("minutos").textContent = String(minutos).padStart(2, '0');
-  document.getElementById("segundos").textContent = String(segundos).padStart(2, '0');
+  document.getElementById('dias').textContent = String(dias).padStart(2, '0');
+  document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+  document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+  document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
 }
 
-setInterval(atualizarContador, 1000);
-atualizarContador(); // Inicializa imediatamente
+function formatarMoeda(valor) {
+  return Number(valor).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  });
+}

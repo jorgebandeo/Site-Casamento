@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nome": "Processador e Liquidificador",
+    "descricao": "Um aliado prático e elegante para facilitar os preparos e deixar os momentos na cozinha ainda mais gostosos a dois.",
+    "valor_total": 403.81,
+    "valor_recolhido": 0,
+    "imagem_path": "imagens/ProcessadorLiquidificador.png",
+    "ativo": 1
+  },
+  {
+    "id": 2,
+    "nome": "Cafeteira Elétrica",
+    "descricao": "",
+    "valor_total": 299.90,
+    "valor_recolhido": 75.00,
+    "imagem_path": "",
+    "ativo": 1
+  },
+  {
+    "id": 3,
+    "nome": "Jantar Romântico",
+    "descricao": "",
+    "valor_total": 250.00,
+    "valor_recolhido": 250.00,
+    "imagem_path": "",
+    "ativo": 0
+  },
+  {
+    "id": 4,
+    "nome": "Panela de Pressão",
+    "descricao": "",
+    "valor_total": 219.90,
+    "valor_recolhido": 0,
+    "imagem_path": "",
+    "ativo": 1
+  },
+  {
+    "id": 5,
+    "nome": "Vale Viagem Lua de Mel",
+    "descricao": "",
+    "valor_total": 1000.00,
+    "valor_recolhido": 600.00,
+    "imagem_path": "",
+    "ativo": 1
+  },
+  {
+    "id": 6,
+    "nome": "Kit Toalhas Bordadas",
+    "descricao": "",
+    "valor_total": 189.90,
+    "valor_recolhido": 0,
+    "imagem_path": "",
+    "ativo": 1
+  }
+]

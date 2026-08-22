@@ -1,0 +1,7 @@
+config.php
+meu-pix/config.php
+meu-pix/certificado.pem
+meu-pix/vendor/
+vendor/
+.env
+*.log

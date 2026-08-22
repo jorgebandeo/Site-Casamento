@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casamento Jorge & Benícia</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style-pages.css">
+  <link rel="stylesheet" href="style.css?v=<?= time() ?>">
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -56,9 +55,7 @@
 
     <section id="presentes">
       <h2>Lista de Presentes</h2>
-      <ul id="listaPresentes">
-        <li>Carregando presentes...</li>
-      </ul>
+      <ul id="listaPresentes"></ul>
     </section>
   </main>
 
@@ -66,6 +63,6 @@
     <p>Com carinho, Jorge & Benícia • Agosto 2025</p>
   </footer>
 
-  <script src="script-pages.js"></script>
+  <script src="script.js?v=<?= time() ?>"></script>
 </body>
 </html>

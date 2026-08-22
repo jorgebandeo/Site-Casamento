@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estilo & Vestimenta</title>
+  <style>
+    :root {
+      --terracota: rgb(226, 114, 91);
+      --terracota-escuro: #B65C47;
+      --terracota-claro: #f3e7e2;
+      --branco: #fff;
+      --cinza: #333;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--terracota-claro);
+      color: var(--cinza);
+      text-align: center;
+    }
+
+    .botao-voltar {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 20;
+      border: 0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      background: var(--terracota-escuro);
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .idiomas {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 20;
+      display: flex;
+      gap: 6px;
+    }
+
+    .idiomas button,
+    .toggle-btn {
+      border: 0;
+      border-radius: 6px;
+      padding: 9px 12px;
+      background: var(--terracota-escuro);
+      color: var(--branco);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    header {
+      background: var(--terracota);
+      color: var(--branco);
+      padding: 4.5rem 1rem 2rem;
+      box-shadow: 0 20px 15px 0 rgba(85,34,23,0.3);
+    }
+
+    main {
+      width: min(92%, 760px);
+      margin: 2rem auto;
+    }
+
+    section {
+      background: var(--branco);
+      margin: 1.5rem auto;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .detalhes {
+      display: none;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .detalhes.aberto { display: block; }
+
+    .cores {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .cor-item { font-size: .82rem; }
+
+    .cor {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin: 0 auto 4px;
+    }
+
+    ul { text-align: left; }
+
+    @media (max-width: 600px) {
+      .botao-voltar,
+      .idiomas { position: absolute; }
+
+      header { padding-top: 5rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="./" class="botao-voltar">Voltar</a>
+
+  <div class="idiomas">
+    <button type="button" onclick="switchLanguage('pt')">PT</button>
+    <button type="button" onclick="switchLanguage('es')">ES</button>
+  </div>
+
+  <div id="pt" class="lang-section">
+    <header>
+      <h1>Estilo & Vestimenta</h1>
+      <p>15 de agosto • Costa Rosa • casamento diurno ao ar livre</p>
+    </header>
+
+    <main>
+      <section id="mulheres">
+        <h2>Para Mulheres</h2>
+        <h3>Estilo: Esporte Chique</h3>
+        <button type="button" class="toggle-btn" onclick="toggleVestimenta()">Ver sugestões de vestimenta</button>
+
+        <div id="vestimentaSugestao" class="detalhes">
+          <p>Para a celebração durante o dia e ao ar livre, a orientação definida foi um visual elegante, leve e confortável.</p>
+
+          <h3>Cores reservadas</h3>
+          <div class="cores">
+            <div class="cor-item"><span class="cor" style="background:#fff"></span>Branco</div>
+            <div class="cor-item"><span class="cor" style="background:#f5f0e8"></span>Off-white</div>
+            <div class="cor-item"><span class="cor" style="background:#1f3148"></span>Azul marinho</div>
+            <div class="cor-item"><span class="cor" style="background:#6f8364"></span>Verde</div>
+            <div class="cor-item"><span class="cor" style="background:#d1735f"></span>Terracota</div>
+            <div class="cor-item"><span class="cor" style="background:#b99a7c"></span>Marrom claro</div>
+          </div>
+
+          <h3>❌ Evite Usar</h3>
+          <ul>
+            <li>As cores reservadas aos noivos, madrinhas e padrinhos.</li>
+            <li>Cores muito fortes ou neon, como vermelho intenso, laranja vibrante e azul royal.</li>
+            <li>Brilhos, pedrarias e tecidos metálicos em excesso.</li>
+            <li>Vestidos muito curtos, decotes ou fendas exageradas.</li>
+            <li>Roupas muito coladas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="homens">
+        <h2>Para Homens</h2>
+        <h3>Estilo: Esporte Chique</h3>
+        <button type="button" class="toggle-btn" onclick="toggleVestimentaHomens()">Ver sugestões de vestimenta</button>
+
+        <div id="vestimentaHomens" class="detalhes">
+          <ul>
+            <li>Camisa social com colete alfaiatado.</li>
+            <li>Paletó casual com camisa social.</li>
+            <li>Uma combinação simples e refinada com paletó.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="es" class="lang-section">
+    <header>
+      <h1>Estilo y Vestimenta</h1>
+      <p>15 de agosto • Costa Rosa • boda de día al aire libre</p>
+    </header>
+
+    <main>
+      <section id="mujeresEs">
+        <h2>Para Mujeres</h2>
+        <h3>Estilo: Sport Chic</h3>
+        <button type="button" class="toggle-btn" onclick="toggleVestimentaEs()">Ver sugerencias de vestimenta</button>
+
+        <div id="vestimentaSugestaoEs" class="detalhes">
+          <p>Para la celebración durante el día y al aire libre, la orientación es un estilo elegante, ligero y cómodo.</p>
+
+          <h3>Colores reservados</h3>
+          <div class="cores">
+            <div class="cor-item"><span class="cor" style="background:#fff"></span>Blanco</div>
+            <div class="cor-item"><span class="cor" style="background:#f5f0e8"></span>Off-white</div>
+            <div class="cor-item"><span class="cor" style="background:#1f3148"></span>Azul marino</div>
+            <div class="cor-item"><span class="cor" style="background:#6f8364"></span>Verde</div>
+            <div class="cor-item"><span class="cor" style="background:#d1735f"></span>Terracota</div>
+            <div class="cor-item"><span class="cor" style="background:#b99a7c"></span>Marrón claro</div>
+          </div>
+
+          <h3>❌ Evitar</h3>
+          <ul>
+            <li>Los colores reservados para los novios, madrinas y padrinos.</li>
+            <li>Colores muy fuertes o neón, como rojo intenso, naranja vibrante y azul royal.</li>
+            <li>Brillos, pedrería y tejidos metálicos en exceso.</li>
+            <li>Vestidos demasiado cortos, escotes o aberturas exageradas.</li>
+            <li>Ropa demasiado ajustada.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="hombresEs">
+        <h2>Para Hombres</h2>
+        <h3>Estilo: Sport Chic</h3>
+        <button type="button" class="toggle-btn" onclick="toggleVestimentaHomensEs()">Ver sugerencias de vestimenta</button>
+
+        <div id="vestimentaHomensEs" class="detalhes">
+          <ul>
+            <li>Camisa social con chaleco de sastrería.</li>
+            <li>Blazer casual con camisa social.</li>
+            <li>Una combinación simple y refinada con blazer.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function switchLanguage(lang) {
+      document.querySelectorAll('.lang-section').forEach(section => section.classList.remove('active'));
+      const target = document.getElementById(lang);
+      if (target) target.classList.add('active');
+    }
+
+    function alternar(id) {
+      const alvo = document.getElementById(id);
+      if (alvo) alvo.classList.toggle('aberto');
+    }
+
+    function toggleVestimenta() { alternar('vestimentaSugestao'); }
+    function toggleVestimentaHomens() { alternar('vestimentaHomens'); }
+    function toggleVestimentaEs() { alternar('vestimentaSugestaoEs'); }
+    function toggleVestimentaHomensEs() { alternar('vestimentaHomensEs'); }
+
+    const idioma = (navigator.language || 'pt').toLowerCase();
+    switchLanguage(idioma.startsWith('es') ? 'es' : 'pt');
+  </script>
+</body>
+</html>
